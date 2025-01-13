@@ -1,2 +1,13 @@
-.venv
+# Ambiente virtual
+.venv/
+
+# Arquivos de ambiente
 .env
+*.env
+.env.local
+.env.*.local
+
+# Outros arquivos de configuração sensíveis
+.env.development
+.env.test
+.env.production
