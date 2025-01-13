@@ -1,99 +1,78 @@
-# 🪙 Projeto ETL de Dados de Criptomoedas
+## Exemplo de Integração com a API OpenAI
 
-## 📋 Descrição
-Este projeto consiste em um pipeline ETL (Extract, Transform, Load) que coleta dados de criptomoedas em tempo real através de APIs públicas, processa essas informações e armazena em um banco de dados para análises posteriores.
+Este é um exemplo simples de como integrar com a API da OpenAI usando Python para fazer perguntas ao modelo GPT-3.5-turbo.
 
-## 🚀 Funcionalidades
-- Extração de dados em tempo real da API de criptomoedas
-- Processamento e limpeza dos dados obtidos
-- Armazenamento em banco de dados SQL/NoSQL
-- Geração de relatórios automáticos
-- Monitoramento de preços e volumes de trading
+## Pré-requisitos
 
-## 🛠️ Tecnologias Utilizadas
-- Python 3.9+
-- Pandas para manipulação de dados
-- Requests para chamadas API
-- SQLAlchemy para ORM
-- PostgreSQL como banco de dados
-- Docker para containerização
+- Python 3.6 ou superior
+- Uma chave de API da OpenAI
 
-## 📦 Estrutura do Projeto
-```
-crypto-etl/
-├── src/
-│   ├── extractors/
-│   ├── transformers/
-│   ├── loaders/
-│   └── utils/
-├── config/
-├── tests/
-├── docs/
-└── docker/
-```
+## Instalação
 
-## 🔧 Configuração e Instalação
+1. Clone este repositório ou baixe os arquivos
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/seu-usuario/crypto-etl.git
-cd crypto-etl
-```
-
-2. Crie um ambiente virtual:
+2. Crie um ambiente virtual (recomendado):
 ```bash
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
 ```
 
-3. Instale as dependências:
+3. Ative o ambiente virtual:
+
+**Windows:**
+```bash
+venv\Scripts\activate
+```
+
+**Linux/Mac:**
+```bash
+source venv/bin/activate
+```
+
+4. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Configure as variáveis de ambiente:
+5. Configure as variáveis de ambiente:
+   - Crie um arquivo `.env` na raiz do projeto
+   - Adicione sua chave da API da OpenAI:
+```
+OPEN_AI_KEY=sua_chave_api_aqui
+```
+
+## Como usar
+
+1. Execute o script:
 ```bash
-cp .env.example .env
-# Edite o arquivo .env com suas configurações
+python exemplos/exemplo04.py
 ```
 
-## 🚀 Como Executar
+O script fará uma pergunta simples à API da OpenAI ("Qual é a capital da França?") e mostrará o código de status da resposta.
 
-```bash
-python src/main.py
+## Estrutura do requirements.txt
+
+Crie um arquivo `requirements.txt` com as seguintes dependências:
+```text
+requests==2.31.0
+python-dotenv==1.0.0
 ```
 
-## 📊 Exemplo de Uso
-```python
-from crypto_etl.extractors import CryptoAPIExtractor
-from crypto_etl.transformers import DataTransformer
-from crypto_etl.loaders import DatabaseLoader
+## Como funciona
 
-# Iniciar o pipeline
-extractor = CryptoAPIExtractor()
-transformer = DataTransformer()
-loader = DatabaseLoader()
+O script utiliza:
+- `requests`: para fazer chamadas HTTP à API da OpenAI
+- `python-dotenv`: para gerenciar variáveis de ambiente de forma segura
+- `json`: para manipular dados JSON na requisição
+- `os`: para acessar variáveis de ambiente
 
-# Executar ETL
-data = extractor.extract()
-transformed_data = transformer.transform(data)
-loader.load(transformed_data)
-```
+A API é chamada com os headers apropriados e um payload contendo o modelo a ser usado e a mensagem do usuário.
 
-## 📝 Configuração da API
-O projeto utiliza a API [nome_da_api] para coletar dados. É necessário:
-1. Criar uma conta em [link_da_api]
-2. Gerar uma API key
-3. Adicionar a key no arquivo `.env`
+## Observações
 
-## 🤝 Contribuindo
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+- Mantenha sua chave de API segura e nunca a compartilhe ou cometa no controle de versão
+- O arquivo `.env` deve ser adicionado ao `.gitignore`
+- Verifique sempre a documentação oficial da OpenAI para atualizações na API
 
+## Suporte
 
-## 📄 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Para dúvidas ou problemas, abra uma issue no repositório.
