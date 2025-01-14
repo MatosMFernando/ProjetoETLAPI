@@ -20,7 +20,7 @@ logfire.instrument_sqlalchemy()
 
 # ------------------------------------------------------
 # Importar Base e BitcoinPreco do database.py
-from database.tabela_bitcoin_precos import Base, BitcoinPreco
+from database import Base, BitcoinPreco
 # ------------------------------------------------------
 
 # Carrega variáveis de ambiente do arquivo .env
