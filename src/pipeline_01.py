@@ -21,10 +21,17 @@ POSTGRES_DB = os.getenv("POSTGRES_DB")
 DATABASE_URL = (
     f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
     f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+    "?sslmode=verify-full"
 )
 
 # Cria o engine e a sessão
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={
+        "sslmode": "require",
+        "connect_timeout": 30
+    }
+)
 Session = sessionmaker(bind=engine)
 
 def criar_tabela():
