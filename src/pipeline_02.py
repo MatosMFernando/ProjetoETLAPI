@@ -111,15 +111,15 @@ def pipeline_bitcoin():
 
 if __name__ == "__main__":
     criar_tabela()
-    logger.info("Iniciando pipeline ETL com atualização a cada 12 horas... (CTRL+C para interromper)")
+    logger.info("Iniciando pipeline ETL com atualização a cada 1 hora... (CTRL+C para interromper)")
 
     while True:
         try:
             pipeline_bitcoin()
-            time.sleep(43200)
+            time.sleep(3600)
         except KeyboardInterrupt:
             logger.info("Processo interrompido pelo usuário. Finalizando...")
             break
         except Exception as e:
             logger.error(f"Erro inesperado durante a pipeline: {e}")
-            time.sleep(43200)
+            time.sleep(3600)
