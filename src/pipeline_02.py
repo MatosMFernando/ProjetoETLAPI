@@ -33,7 +33,7 @@ POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
 
-# Monta a URL de conexão ao banco PostgreSQL (sem ?sslmode=...)
+# Monta a URL de conexão ao banco PostgreSQL com parâmetros SSL
 DATABASE_URL = (
     f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}"
     f"@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
